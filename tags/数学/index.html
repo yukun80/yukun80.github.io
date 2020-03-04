@@ -6,20 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yukun80.github.io">
-  <title>Depth First Search_小结 | yukun</title>
+  <title>Tag: 数学 | yukun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="深搜算是接触时间最长的搜索算法之一，但是由于平时遇到的题目不多，反而学的不算扎实。这类算法的难点在于状态的记录、检索、剪枝优化。尤其是把问题的发展想明白，常犯的错误是“重叠”，没有弄明白状态的“层次”和“分支”，造成重复遍历若干覆盖同一状态的搜索树，使得搜索的复杂度大规模增长。本篇就总结两道不错的入门复习题和应该学会的综合题。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Depth First Search_小结">
-<meta property="og:url" content="https://yukun80.github.io/2020/03/02/[0X22]%20Depth%20First%20Search_%E5%B0%8F%E7%BB%93/index.html">
+  <meta name="description" content="blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yukun">
+<meta property="og:url" content="https://yukun80.github.io/tags/%E6%95%B0%E5%AD%A6/index.html">
 <meta property="og:site_name" content="yukun">
-<meta property="og:description" content="深搜算是接触时间最长的搜索算法之一，但是由于平时遇到的题目不多，反而学的不算扎实。这类算法的难点在于状态的记录、检索、剪枝优化。尤其是把问题的发展想明白，常犯的错误是“重叠”，没有弄明白状态的“层次”和“分支”，造成重复遍历若干覆盖同一状态的搜索树，使得搜索的复杂度大规模增长。本篇就总结两道不错的入门复习题和应该学会的综合题。">
+<meta property="og:description" content="blog">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-02T03:33:39.000Z">
-<meta property="article:modified_time" content="2020-03-02T06:48:49.124Z">
 <meta property="article:author" content="yukun">
-<meta property="article:tag" content="DFS">
-<meta property="article:tag" content="LYD">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="yukun" type="application/atom+xml">
@@ -144,142 +140,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-[0X22] Depth First Search_小结" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Depth First Search_小结
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-03-04T13:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/">3.3可惜的C题，真的非常简单，就是没想出来</a>
     </h1>
   
 
-        
-        <a href="/2020/03/02/%5B0X22%5D%20Depth%20First%20Search_%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-02T03:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>深搜算是接触时间最长的搜索算法之一，但是由于平时遇到的题目不多，反而学的不算扎实。这类算法的难点在于状态的记录、检索、剪枝优化。尤其是把问题的发展想明白，常犯的错误是“重叠”，没有弄明白状态的“层次”和“分支”，造成重复遍历若干覆盖同一状态的搜索树，使得搜索的复杂度大规模增长。本篇就总结两道不错的入门复习题和应该学会的综合题。</p>
-<a id="more"></a>
-
-<h4 id="CODEVS4228-小猫爬山"><a href="#CODEVS4228-小猫爬山" class="headerlink" title="CODEVS4228 小猫爬山"></a><a href="https://ac.nowcoder.com/acm/contest/1014/A" target="_blank" rel="noopener">CODEVS4228 小猫爬山</a></h4><h5 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h5><p>有n只小猫要坐缆车下山，每辆缆车最大承重为w，租用费用为1元/辆。现在给出每只猫的重量Ci，问把n只猫都送下山最少花多少钱？1 ≤ n ≤ 18，1 ≤ Ci ≤ w ≤ 1e8。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>本题需要记录的状态有当前正在处理第几只猫now，目前已经租用了几辆车cnt，每辆缆车上当前搭载的重量之和cab。在考虑每一只猫时：<br>1、优先考虑能否将猫放到已经租用的缆车上，如果可以，就以cab+Ci为下一状态继续递归搜索；<br>2、遍历完所有缆车后考虑再租一辆新车载这只猫，cnt++；<br>3、每一个状态向下搜索后，记得回溯还原“案发现场”以便搜索下一种可能状态；<br>4、注意剪枝优化，最大成本为给每只猫租一辆车，所以每当搜索到结束状态就更新最小成本；相应的，每当发现当前成本已经超过记录的最小成本，就可以立刻回溯了。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, w, a[N], c[N];</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> a &gt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(now == n + <span class="number">1</span>) &#123;</span><br><span class="line">      ans = <span class="built_in">min</span>(ans, cnt);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(cnt &gt;= ans) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; ++i) &#123;</span><br><span class="line">      <span class="keyword">if</span>(c[i] + a[now] &lt;= w) &#123;</span><br><span class="line">         c[i] += a[now];</span><br><span class="line">         dfs(now+<span class="number">1</span>, cnt);</span><br><span class="line">         c[i] -= a[now];  <span class="comment">//还原</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   c[cnt+<span class="number">1</span>] += a[now];  <span class="comment">//新开一辆车</span></span><br><span class="line">   dfs(now+<span class="number">1</span>, cnt+<span class="number">1</span>);  <span class="comment">//还原</span></span><br><span class="line">   <span class="comment">// c[cnt+1] = 0;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; w;</span><br><span class="line">   for1(i, n) &#123;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">   &#125;</span><br><span class="line">   sort(a + <span class="number">1</span>, a + <span class="number">1</span> + n, cmp);</span><br><span class="line">   ans = n;</span><br><span class="line">   dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="POJ-2676-3074-Sudoku"><a href="#POJ-2676-3074-Sudoku" class="headerlink" title="POJ 2676/3074 Sudoku"></a><a href="https://ac.nowcoder.com/acm/contest/1014/B" target="_blank" rel="noopener">POJ 2676/3074 Sudoku</a></h4><h5 id="【题意】"><a href="#【题意】" class="headerlink" title="【题意】"></a>【题意】</h5><p>给出一个9x9的数独游戏，完成填写该数独，要求图中每行、每列、每个3x3的九宫格内数字1~9恰好出现一次。POJ3074数据更难。</p>
-<h5 id="【思路】"><a href="#【思路】" class="headerlink" title="【思路】"></a>【思路】</h5><p>百度了一下数独游戏发现解决该问题的算法博大精深，最近是没时间学了，有很多优化复杂度的框架，这里就使用通过代码的常规思路总结一下。<br>数独问题的搜索框架很简单，在每个状态下，找出一个还没有填的位置，检查还有哪些数字可以填，用这些合法的数字继续往下递归即可。</p>
-<blockquote>
-<p>这里容易犯开头说的重复错误，即在每个状态下，只找一个位置进行状态的递归，不能枚举所有可填数字的位置向下递归，否则会造成重复遍历若干棵覆盖同一状态空间的搜索树，使得复杂度过大。</p>
-<blockquote>
-<p>此外，为了降低搜索规模，程序应该像人类玩数独一样，从可能性最小的位置开始尝试：也就是在每个状态下，从所有空位置里可填数字可能性最少的位置考虑作为分支。</p>
-<blockquote>
-<p>状态的保存如果用三维数组会在记录、检索、更新上花费太多时间，我们考虑使用一个9位二进制数来保存当前位置可以填的数字，使用位运算降低复杂度。</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>具体的说，对于每个位置，将它所在的行、列、九宫格的3个二进制数进行按位与运算即可获得能填哪些数，然后使用lowbit()运算可以将数字取出；<br>当一个位置填上一个数，将该位置的3个二进制数相应的位数改为0，即可更新状态，回溯时改为1还原现场；</p>
-<h5 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> row[N], col[N], g[<span class="number">5</span>][<span class="number">5</span>];  <span class="comment">//3个二进制数</span></span><br><span class="line"><span class="keyword">int</span> ones[<span class="number">1</span>&lt;&lt;N], mp[<span class="number">1</span>&lt;&lt;N];  <span class="comment">//打表记录所有状态1的个数  记录每个位置为1时对应的十进制数</span></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">105</span>];  <span class="comment">//原图</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> row[x] &amp; col[y] &amp; g[x/<span class="number">3</span>][y/<span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 递归终点是空位置数量为0时</span></span><br><span class="line">    <span class="keyword">if</span>(!cnt) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   <span class="comment">// 记录最少可能位置的1的数量和坐标</span></span><br><span class="line">    <span class="keyword">int</span> minv = <span class="number">10</span>, x, y;  </span><br><span class="line">   <span class="comment">//  遍历位置找最佳开始点</span></span><br><span class="line">    for0(i, N)</span><br><span class="line">        for0(j, N) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str[i*<span class="number">9</span> + j] == <span class="string">'.'</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> t = ones[<span class="built_in">get</span>(i, j)];</span><br><span class="line">                <span class="keyword">if</span>(t &lt; minv) minv = t, x = i, y = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="comment">// 为该位置所有可能开辟分支</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="built_in">get</span>(x, y); i; i -= lowbit(i)) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = mp[lowbit(i)];</span><br><span class="line">        row[x] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        col[y] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        g[x/<span class="number">3</span>][y/<span class="number">3</span>] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        str[<span class="number">9</span>*x + y] = <span class="string">'1'</span> + t;</span><br><span class="line">      <span class="comment">//   继续下一个位置</span></span><br><span class="line">        <span class="keyword">if</span>(dfs(cnt<span class="number">-1</span>)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      <span class="comment">//   回溯还原现场</span></span><br><span class="line">        row[x] += (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        col[y] += (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        g[x/<span class="number">3</span>][y/<span class="number">3</span>] += (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">        str[<span class="number">9</span>*x + y] = <span class="string">'.'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">//  到这里说明没有可以填的位置，直接结束。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 初始化每一个位置的可能都是9</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    for0(i, <span class="number">9</span>) row[i] = col[i] = (<span class="number">1</span>&lt;&lt;N) - <span class="number">1</span>;</span><br><span class="line">    for0(i, <span class="number">3</span>)</span><br><span class="line">        for0(j, <span class="number">3</span>) &#123;</span><br><span class="line">            g[i][j] = (<span class="number">1</span>&lt;&lt;N) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 打表</span></span><br><span class="line">    for0(i, N) mp[<span class="number">1</span>&lt;&lt;i] = i;</span><br><span class="line">    for0(i, <span class="number">1</span>&lt;&lt;N) &#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j; j -= lowbit(j)) s++;</span><br><span class="line">        ones[i] = s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; str &amp;&amp; str[<span class="number">0</span>] != <span class="string">'e'</span>) &#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, k = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j, ++k) &#123;</span><br><span class="line">                <span class="keyword">if</span>(str[k] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> t = str[k] - <span class="string">'1'</span>;  <span class="comment">//右移位数</span></span><br><span class="line">                    row[i] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">                    col[j] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">                    g[i/<span class="number">3</span>][j/<span class="number">3</span>] -= (<span class="number">1</span>&lt;&lt;t);</span><br><span class="line">                &#125; <span class="keyword">else</span> cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">      <span class="comment">// 空位置的数量为递归起点</span></span><br><span class="line">        dfs(cnt);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>嘻嘻。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思维</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          3.3可惜的C题，真的非常简单，就是没想出来
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/02/22/%E6%98%8E%E7%99%BD%E4%BA%86%E5%AD%A4%E7%8B%AC%E4%B8%8E%E5%AF%82%E5%AF%9E/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">明白了孤独与寂寞</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#CODEVS4228-小猫爬山"><span class="toc-number">1.</span> <span class="toc-text">CODEVS4228 小猫爬山</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#题意"><span class="toc-number">1.1.</span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思路"><span class="toc-number">1.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POJ-2676-3074-Sudoku"><span class="toc-number">2.</span> <span class="toc-text">POJ 2676&#x2F;3074 Sudoku</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#【题意】"><span class="toc-number">2.1.</span> <span class="toc-text">【题意】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#【思路】"><span class="toc-number">2.2.</span> <span class="toc-text">【思路】</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#【代码】"><span class="toc-number">2.3.</span> <span class="toc-text">【代码】</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -302,9 +220,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
