@@ -162,7 +162,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="C-Kuroni-and-Impossible-Calculation"><a href="#C-Kuroni-and-Impossible-Calculation" class="headerlink" title="C. Kuroni and Impossible Calculation"></a><a href="https://codeforces.com/contest/1305/problem/C" target="_blank" rel="noopener">C. Kuroni and Impossible Calculation</a></h3><h5 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h5><p>给出一个数量级在2e5的整型数组，要求求出(∏1≤i&lt;j≤n|ai−aj|) % m 的值。注意：n ≤ 2e5，m ≤ 1000，ai ≤ 1e9。</p>
+        <h3 id="C-Kuroni-and-Impossible-Calculation"><a href="#C-Kuroni-and-Impossible-Calculation" class="headerlink" title="C. Kuroni and Impossible Calculation"></a><a href="https://codeforces.com/contest/1305/problem/C" target="_blank" rel="noopener">C. Kuroni and Impossible Calculation</a></h3><!---->
+<h5 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h5><p>给出一个数量级在2e5的整型数组，要求求出(∏1≤i&lt;j≤n|ai−aj|) % m 的值。注意：n ≤ 2e5，m ≤ 1000，ai ≤ 1e9。</p>
 <p><B>思路</B></p>
 <p>在思考这道题的时候就想到了不能直接暴力，显而易见，复杂度不能大于O(nlogn)，而且也注意到了m最大只有1000，与其他两个指标格格不入，想到应该可以简化程序过程，但是最终还是没有想到方向。其实很容易想到，答案一定在0~999之间，而且数组a有很大的数据量，只要出现一个因子是m的倍数，答案一定是0。然后可以发现如果任意两个数对m取模结果相同，那么这两个数之间一定隔着m的倍数，答案即为0。将所有元素%m的值记录，如果任何一个值出现了两次及以上，答案直接为0，否则再重新遍历。<br>基于这个思想，还有更简单的做法，假设最坏的情况是a[i] % m 各不相同，最多也只有1000种情况，当n ＞ 1000时至少会出现两个相同的余数，否则才需要遍历，此时O(n^2)的复杂度已经能接受了</p>
 <p><B>代码</B></p>
