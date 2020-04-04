@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yukun80.github.io">
-  <title>Archives: 2020 | yukun</title>
+  <title>(div.2)Codeforces Round &amp;631 补题报告 | yukun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yukun">
-<meta property="og:url" content="https://yukun80.github.io/archives/2020/index.html">
+  <meta name="description" content="C. Dreamoon Likes Coloring题意给定数量为n的一行方格和m个操作长度Li,要求通过m次操作为n个格子都涂上颜色且最终m种颜色都需要存在,每次涂色需要填涂长度Li的方格为颜色i,颜色可以被覆盖.求得每次填涂可以的的起始位置.若不存在输出-1; 思路:贪心1、如果Li的总和达不到长度n则一定不能满足要求;2、根据多余的数量(sum - n)对每一次的长度进行压缩,最短压缩到1;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(div.2)Codeforces Round &amp;631 补题报告">
+<meta property="og:url" content="https://yukun80.github.io/2020/04/04/Codeforces%20Round%20#631/index.html">
 <meta property="og:site_name" content="yukun">
-<meta property="og:description" content="blog">
+<meta property="og:description" content="C. Dreamoon Likes Coloring题意给定数量为n的一行方格和m个操作长度Li,要求通过m次操作为n个格子都涂上颜色且最终m种颜色都需要存在,每次涂色需要填涂长度Li的方格为颜色i,颜色可以被覆盖.求得每次填涂可以的的起始位置.若不存在输出-1; 思路:贪心1、如果Li的总和达不到长度n则一定不能满足要求;2、根据多余的数量(sum - n)对每一次的长度进行压缩,最短压缩到1;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-04T15:38:46.952Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="yukun" type="application/atom+xml">
@@ -140,36 +144,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Codeforces Round #631" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/Codeforces%20Round%20#631/" class="archive-article-date">
-  	<time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/Codeforces%20Round%20#631/">(div.2)Codeforces Round &amp;631 补题报告</a>
+    <h1 class="article-title" itemprop="name">
+      (div.2)Codeforces Round &amp;631 补题报告
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/04/04/Codeforces%20Round%20#631/" class="archive-article-date">
+  	<time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="C-Dreamoon-Likes-Coloring"><a href="#C-Dreamoon-Likes-Coloring" class="headerlink" title="C. Dreamoon Likes Coloring"></a><a href="https://codeforces.com/contest/1330/problem/C" target="_blank" rel="noopener">C. Dreamoon Likes Coloring</a></h3><p><strong>题意</strong><br>给定数量为n的一行方格和m个操作长度Li,要求通过m次操作为n个格子都涂上颜色且最终m种颜色都需要存在,每次涂色需要填涂长度Li的方格为颜色i,颜色可以被覆盖.求得每次填涂可以的的起始位置.若不存在输出-1;</p>
+<p><strong>思路:贪心</strong><br>1、如果Li的总和达不到长度n则一定不能满足要求;<br>2、根据多余的数量(sum - n)对每一次的长度进行压缩,最短压缩到1;</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">ll n, m, l[N], sum, pos, ans[N];</span><br><span class="line"><span class="keyword">bool</span> pd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">   for1(i, m) &#123;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; l[i];</span><br><span class="line">      sum += l[i];</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(sum &lt; n) <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">      pd = <span class="number">1</span>;</span><br><span class="line">      pos = <span class="number">1</span>;</span><br><span class="line">      sum -= n;</span><br><span class="line">      for1(i, m) &#123;</span><br><span class="line">         <span class="keyword">if</span>(pos + l[i] - <span class="number">1</span> &gt; n) &#123;</span><br><span class="line">            pd = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> <span class="keyword">if</span>(sum &gt;= l[i] - <span class="number">1</span>) &#123;</span><br><span class="line">            sum -= l[i] - <span class="number">1</span>;</span><br><span class="line">            l[i] = <span class="number">1</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l[i] -= sum;</span><br><span class="line">            sum = <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         ans[i] = pos;</span><br><span class="line">         pos += l[i];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(!pd) <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">      <span class="keyword">else</span> for1(i, m) <span class="built_in">printf</span>(<span class="string">"%lld%c"</span>, ans[i], i==m ? <span class="string">'\n'</span> : <span class="string">' '</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D-Dreamoon-Likes-Sequences"><a href="#D-Dreamoon-Likes-Sequences" class="headerlink" title="D. Dreamoon Likes Sequences"></a><a href="https://codeforces.com/contest/1330/problem/D" target="_blank" rel="noopener">D. Dreamoon Likes Sequences</a></h3><p><strong>题意</strong><br>构造一个满足”使b数列递增的”同时递增的a数列;</p>
+<p><strong>思路:思维 + dp</strong><br>这道题的代码实现非常简单,但是关键使能想明白异或的性质和数列递增之间的关系.</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ll t, d, m, ans, now;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">   <span class="keyword">while</span>(t--) &#123;</span><br><span class="line">      <span class="comment">// 最大值为d的状态</span></span><br><span class="line">      <span class="keyword">bool</span> pd = <span class="number">1</span>;</span><br><span class="line">      ans = <span class="number">1</span>;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; d &gt;&gt; m;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; pd; ++i) &#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="number">1</span> &lt;&lt; (i+<span class="number">1</span>) &lt;= d) now = <span class="number">1</span> &lt;&lt; i;</span><br><span class="line">         <span class="keyword">else</span> now = d - (<span class="number">1</span> &lt;&lt; i) + <span class="number">1</span>, pd = <span class="number">0</span>;</span><br><span class="line">         <span class="comment">// (now + 1)是因为可能会跳过这一位</span></span><br><span class="line">         ans = ans * (now + <span class="number">1</span>) % m;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 减去全部跳过的情况</span></span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; (ans + m - <span class="number">1</span>) % m &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,267 +195,68 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最小生成树小结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/">最小生成树小结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Dreamoon-Likes-Coloring"><span class="toc-number">1.</span> <span class="toc-text">C. Dreamoon Likes Coloring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Dreamoon-Likes-Sequences"><span class="toc-number">2.</span> <span class="toc-text">D. Dreamoon Likes Sequences</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">最短路总结与解题报告</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/%5B0x25%5D%20BFS%E8%BF%9B%E9%98%B6/" class="archive-article-date">
-  	<time datetime="2020-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/%5B0x25%5D%20BFS%E8%BF%9B%E9%98%B6/">BFS进阶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/">3.3可惜的C题，真的非常简单，就是没想出来</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" class="archive-article-date">
-  	<time datetime="2020-03-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">Depth First Search_小结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/22/%E6%98%8E%E7%99%BD%E4%BA%86%E5%AD%A4%E7%8B%AC%E4%B8%8E%E5%AF%82%E5%AF%9E/" class="archive-article-date">
-  	<time datetime="2020-02-22T13:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/22/%E6%98%8E%E7%99%BD%E4%BA%86%E5%AD%A4%E7%8B%AC%E4%B8%8E%E5%AF%82%E5%AF%9E/">明白了孤独与寂寞</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日常</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -468,8 +279,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
