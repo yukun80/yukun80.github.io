@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yukun80.github.io">
-  <title>Tag: LYD | yukun</title>
+  <title>ArcGIS Engine学习01 | yukun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yukun">
-<meta property="og:url" content="https://yukun80.github.io/tags/LYD/index.html">
+  <meta name="description" content="ArcGIS Engine是一个用于建立自定义独立地理信息系统应用程序的平台，支持多种APIs，拥有许多高级GIS功能，构建在工业标准基础之上。   组件、软件组件和组件软件组件：组件是对数据和方法的简单封装。组件可以有自己的属性和方法。属性是组件数据的简单访问者。方法则是组件的一些简单而可见的功能。软件组件：为自包含的、可编程的、可重用的、与语言无关的软件单元,软件组件可以很容易被用于组装应用程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArcGIS Engine学习01">
+<meta property="og:url" content="https://yukun80.github.io/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/index.html">
 <meta property="og:site_name" content="yukun">
-<meta property="og:description" content="blog">
+<meta property="og:description" content="ArcGIS Engine是一个用于建立自定义独立地理信息系统应用程序的平台，支持多种APIs，拥有许多高级GIS功能，构建在工业标准基础之上。   组件、软件组件和组件软件组件：组件是对数据和方法的简单封装。组件可以有自己的属性和方法。属性是组件数据的简单访问者。方法则是组件的一些简单而可见的功能。软件组件：为自包含的、可编程的、可重用的、与语言无关的软件单元,软件组件可以很容易被用于组装应用程">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sbimg.cn/image/image.MtGG2">
+<meta property="og:image" content="https://sbimg.cn/image/image.MtcjU">
+<meta property="og:image" content="https://sbimg.cn/image/image.Mtdxd">
+<meta property="article:published_time" content="2020-04-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-20T04:17:45.100Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="GIS设计与开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sbimg.cn/image/image.MtGG2">
   
     <link rel="alternative" href="/atom.xml" title="yukun" type="application/atom+xml">
   
@@ -140,190 +147,114 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-GIS开发$1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ArcGIS Engine学习01
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/" class="archive-article-date">
+  	<time datetime="2020-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ArcGIS Engine是一个用于<strong>建立自定义独立地理信息系统应用程序的平台</strong>，支持多种APIs，拥有许多高级GIS功能，构建在工业标准基础之上。</p>
+<!-- ##### 第一章 ArcGIS Engine简介 -->
+
+<h4 id="组件、软件组件和组件软件"><a href="#组件、软件组件和组件软件" class="headerlink" title="组件、软件组件和组件软件"></a>组件、软件组件和组件软件</h4><p>组件：<br>组件是对数据和方法的简单封装。组件可以有自己的属性和方法。属性是组件数据的简单访问者。方法则是组件的一些简单而可见的功能。<br>软件组件：<br>为自包含的、可编程的、可重用的、与语言无关的软件单元,软件组件可以很容易被用于组装应用程序中。软件组件开发主要是开发与维护系统构造过程中用到的组件。将软件组件作为一个单独的过程，目的是将组件作为构造软件的“零部件”。<br>组件软件：应用组件化思想与技术构建的真实软件系统。它己经成为了软件系统的根基，太普通与常见了，以致于不需要再强调了。</p>
+<h4 id="AO（ArcObjects）和AE（ArcGIS-Engine）的区别和联系"><a href="#AO（ArcObjects）和AE（ArcGIS-Engine）的区别和联系" class="headerlink" title="AO（ArcObjects）和AE（ArcGIS Engine）的区别和联系"></a>AO（ArcObjects）和AE（ArcGIS Engine）的区别和联系</h4><p><img src="https://sbimg.cn/image/image.MtGG2" alt=""><br>ArcGIS Engine：通过多种应用程序接口建立自定义应用程序的嵌入式 GIS 组件库。<br>·ArcObjects（简称AO）是ArcGIS™ 家族中应用程序ArcMap™, ArcCatalog™ 和 ArcScene™的开发平台，它是基于Microsoft COM技术所构建的一系列COM组件集。<br><img src="https://sbimg.cn/image/image.MtcjU" alt=""></p>
+<p>联系：<br>1.ArcEngine包括核心ArcObjects的功能，是对AO中的大部分接口、类等进行封装所构成的嵌入式组件。<br>2.AE中的组件接口、方法、属性与AO是相同的。<br>区别：<br>1.开发环境：ArcObjects必须依赖ArcGIS Desktop桌面平台，即购买安装了ArcGISDesktop的同时，安装ArcObjects，才能利用AO进行开发；ArcEngine是独立的嵌入式组件，不依赖ArcGISDesktop桌面平台，直接安装ArcEngine Runtime和DeveloperKit后，即可利用其在不同开发语言环境下开发。<br>2.功能：AO的功能更强大，AE的功能相对弱些，AE不具备AO的少部分功能。ArcEngine具有简洁、灵活、易用、可移植性强等的特点。</p>
+<h4 id="ArcGIS-Engine组成部分"><a href="#ArcGIS-Engine组成部分" class="headerlink" title="ArcGIS Engine组成部分"></a>ArcGIS Engine组成部分</h4><p>由两个产品组成：<br>1.面向开发人员的软件开发包(ArcGIS Engine Developer kit)<br>2.面向最终用户的运行时(ArcGIS Engine Runtime)<br>ArcGIS Engine 开发工具包是一个基于组件的软件开发产品，可用于构建自定义GIS 和制图应用软件。它并不是一个终端用户产品，而是软件开发人员的工具包，支持四种开发环境（C++、COM、.NET、Java），适于为Windows、UNIX 或Linux 用户构建基础制图和综合动态GIS 应用软件。<br>ArcGIS Engine Runtime 是一个使终端用户软件能够运行的核心ArcObjects 组件产品，并且将被安装在每一台运行ArcGIS Engine 应用程序的计算机上。<br><strong>ArcGIS Engine 的五个组成部分概括如下：</strong><br>1.Base Services（基本服务）：由 GIS 核心 ArcObjects 构<br>成，几乎所有 GIS 应用程序都需要，如要素几何体和显示。<br>2．Data Access（数据存取）：ArcGIS Engine 可以对许<br>多栅格和矢量格式进行存取，包括强大而灵活的地理数据库。<br>3．Map Presentation（地图表达）：包括用于创建和显示带有符号体系和标注功能的地图的 ArcObjects，以及包括创建自定义应用程序的专题制图功能的ArcObjects。<br>4．Develper Components（开发组件）：用于快速应用程序开发的高级用户接口控件和用于高效开发的一个综合帮助系统。<br>5．Runtime Options（运行时选件）：ArcGIS Engine 运行时可以与标准功能或其他高级功能一起部署。<br>（除运行时选件外，这些部分都可以通过 ArcGIS Engine 的软件开发工具包获得。ArcGIS Engine 运行时及其选项虽然也是自定义 GIS 应用程序开发不可或缺的一部分，但涉及到特定的应用程序部署，<strong>因此被认为是一个独立的组成部分。</strong> ）<br><img src="https://sbimg.cn/image/image.Mtdxd" alt="逻辑构成/组成部分"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/">最小生成树小结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIS设计与开发</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/04/Codeforces%20Round%20#631/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">(div.2)Codeforces Round &amp;631 补题报告</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">最短路总结与解题报告(ing)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#组件、软件组件和组件软件"><span class="toc-number">1.</span> <span class="toc-text">组件、软件组件和组件软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AO（ArcObjects）和AE（ArcGIS-Engine）的区别和联系"><span class="toc-number">2.</span> <span class="toc-text">AO（ArcObjects）和AE（ArcGIS Engine）的区别和联系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ArcGIS-Engine组成部分"><span class="toc-number">3.</span> <span class="toc-text">ArcGIS Engine组成部分</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/%5B0x25%5D%20BFS%E8%BF%9B%E9%98%B6/" class="archive-article-date">
-  	<time datetime="2020-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/%5B0x25%5D%20BFS%E8%BF%9B%E9%98%B6/">BFS进阶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" class="archive-article-date">
-  	<time datetime="2020-03-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">Depth First Search_小结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -346,9 +277,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
