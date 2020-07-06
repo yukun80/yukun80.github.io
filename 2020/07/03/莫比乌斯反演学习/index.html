@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yukun80.github.io">
-  <title>Tag: 图论 | yukun</title>
+  <title>莫比乌斯反演学习 | yukun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yukun">
-<meta property="og:url" content="https://yukun80.github.io/tags/%E5%9B%BE%E8%AE%BA/index.html">
+  <meta name="description" content="未完成，题量有限。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演学习">
+<meta property="og:url" content="https://yukun80.github.io/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="yukun">
-<meta property="og:description" content="blog">
+<meta property="og:description" content="未完成，题量有限。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-03T01:53:39.000Z">
+<meta property="article:modified_time" content="2020-07-06T02:55:31.859Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="训练">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="yukun" type="application/atom+xml">
@@ -140,148 +144,119 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-莫比乌斯反演学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      莫比乌斯反演学习
+    </h1>
+  
+
+        
+        <a href="/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-07-03T01:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>未完成，题量有限。</p>
+<a id="more"></a>
+
+<h4 id="莫比乌斯入门（牛客）"><a href="#莫比乌斯入门（牛客）" class="headerlink" title="莫比乌斯入门（牛客）"></a><a href="https://ac.nowcoder.com/acm/contest/1027/B" target="_blank" rel="noopener">莫比乌斯入门（牛客）</a></h4><p><strong>题意</strong><br>给两个正整数a，b，求分别在a和b范围内gcd(x, y) = d的整数对有多少个。</p>
+<p><strong>思路</strong><br>公式求范围内gcd(x, y) = d 等价于根据公式将范围和d同时除以d。<br>此外连同莫比乌斯函数求和即可。<br>如何实现？ 数论分块+前缀和</p>
+<p><strong>代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tt, a, b, d, tot, ans;</span><br><span class="line"><span class="keyword">int</span> miu[N], prim[M], vis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   miu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">      <span class="keyword">if</span>(!vis[i]) prim[++tot] = i, miu[i] = <span class="number">-1</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; prim[j] * i &lt;= N; ++j) &#123;</span><br><span class="line">         <span class="keyword">int</span> tmp = i * prim[j];</span><br><span class="line">         vis[tmp] = <span class="number">1</span>;</span><br><span class="line">         miu[tmp] = i%prim[j] ? -miu[i] : <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">if</span>(i % prim[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i) miu[i] += miu[i<span class="number">-1</span>];</span><br><span class="line">   <span class="keyword">for</span>(<span class="built_in">cin</span> &gt;&gt; tt; tt--; ) &#123;</span><br><span class="line">      ans = <span class="number">0</span>;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;a, &amp;b, &amp;d);</span><br><span class="line">      a /= d, b /= d;</span><br><span class="line">      <span class="keyword">if</span>(a &gt; b) swap(a, b);</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a; ) &#123;</span><br><span class="line">         <span class="keyword">int</span> j = <span class="built_in">min</span>(a / (a / i), b / (b / i));</span><br><span class="line">         ans += (a/i) * (b/i) * (miu[j] - miu[i<span class="number">-1</span>]);</span><br><span class="line">         i = j+<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="HDU-6363"><a href="#HDU-6363" class="headerlink" title="HDU-6363"></a><a href="https://vjudge.net/contest/380644#problem/E" target="_blank" rel="noopener">HDU-6363</a></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">ll F[M], invF[M];</span><br><span class="line"><span class="function">ll <span class="title">power</span><span class="params">(ll a, ll b)</span> </span>&#123;</span><br><span class="line">    ll ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b &amp; <span class="number">1</span>) ret = (ret * a) % mod;</span><br><span class="line">        a = (a * a) % mod;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    F[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; M; i++) &#123;</span><br><span class="line">        F[i] = (F[i - <span class="number">1</span>] * i) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    invF[M - <span class="number">1</span>] = power(F[M - <span class="number">1</span>], mod - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = M - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        invF[i] = invF[i + <span class="number">1</span>] * (i + <span class="number">1</span>) % mod; <span class="comment">//invF[i]*i!=1,invF[i+1]*i!*(i+1)=1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 求组合数</span></span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">0</span> || m &lt; <span class="number">0</span> || m &gt; n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(m == <span class="number">0</span> || m == n)    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> F[n] * invF[n - m] % mod * invF[m] % mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> prime[M], mob[M], p[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pnum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span> (prime, <span class="literal">true</span>, <span class="keyword">sizeof</span> (prime) );</span><br><span class="line">    mob[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; M; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prime[i]) &#123;</span><br><span class="line">            p[pnum ++] = i;</span><br><span class="line">            mob[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; pnum &amp;&amp; (ll) i * p[j] &lt; M; j++) &#123;</span><br><span class="line">            prime[i * p[j]] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % p[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                mob[i * p[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mob[i * p[j]] = -mob[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll fob[M];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    fob[<span class="number">0</span>] = <span class="number">0</span>; fob[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; M; ++i) fob[i] = (fob[i - <span class="number">1</span>] + fob[i - <span class="number">2</span>]) % mod;</span><br><span class="line">    init(); initc();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="comment">//FIN;</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n, k; <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        for1(i, n) &#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i) <span class="keyword">continue</span>;</span><br><span class="line">            ll t = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n; j += i)</span><br><span class="line">                <span class="keyword">if</span>(n % j == <span class="number">0</span>) t = (t + mob[j / i] * C(n / j + k - <span class="number">1</span>, k - <span class="number">1</span>) + mod) % mod;</span><br><span class="line">            ans = (ans + t * (power(<span class="number">2l</span>l, fob[i]) - <span class="number">1</span> + mod)) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        ll dx = C(n + k - <span class="number">1</span>, k - <span class="number">1</span>);</span><br><span class="line">        dx = power(dx, (ll)mod - <span class="number">2</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans * dx % mod);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%B0%8F%E7%BB%93/">最小生成树小结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">训练</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/29/DP%E5%BC%BA%E5%8C%96%E8%AE%AD%E7%BB%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2020暑期集训1：DP强化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/29/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93/">最短路总结与解题报告(ing)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#莫比乌斯入门（牛客）"><span class="toc-number">1.</span> <span class="toc-text">莫比乌斯入门（牛客）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HDU-6363"><span class="toc-number">2.</span> <span class="toc-text">HDU-6363</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E4%B8%8ELCA/" class="archive-article-date">
-  	<time datetime="2020-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E4%B8%8ELCA/">BFS进阶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -304,9 +279,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
