@@ -142,6 +142,176 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-7.10 18级多校适应训练1题解及补题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/">7.10 多校适应训练1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-07-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="比赛过程"><a href="#比赛过程" class="headerlink" title="比赛过程"></a>比赛过程</h3><p>今天比赛自己十分混乱，开场和队友商量看C，遇上小学期第一天下午老师讲课，边听课边思考，一度裂开。后面想到了方法但是还是wa了(枯了)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h5 id="I：思维模拟"><a href="#I：思维模拟" class="headerlink" title="I：思维模拟"></a>I：思维模拟</h5><p><strong>题意</strong><br>两个人A和B分别持有两个数组，每一轮都要扔出去一个数，直到最后都只剩下最后一个数字。A想要使得两个数的差最多，B则相反。现在给你数组，要你求出两人的最佳决策后最后的答案。</p>
+<p><strong>思路</strong><br>不管A剩下哪一个数字，B都有办法剩下那个与之相差最小的数。那么答案就是A的所有数与B的所有数字中最小差里面最大的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, a[N], b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">   for1(i, n) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a+i);</span><br><span class="line">   for1(i, n) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, b+i);</span><br><span class="line">   <span class="keyword">int</span> ans = <span class="number">0</span>, minn;</span><br><span class="line">   for1(i, n) &#123;</span><br><span class="line">      minn = INF;</span><br><span class="line">      for1(j, n) &#123;</span><br><span class="line">         minn = <span class="built_in">min</span>(minn, <span class="built_in">abs</span>(a[i] - b[j]));</span><br><span class="line">      &#125;</span><br><span class="line">      ans = <span class="built_in">max</span>(ans, minn);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="D：找出规律构造"><a href="#D：找出规律构造" class="headerlink" title="D：找出规律构造"></a>D：找出规律构造</h5><p><strong>题意</strong><br>给出一个长度为2n的循环字符串，问是否能重新排列使得没有相同的长度为n的子串。</p>
+<p><strong>思路</strong><br>分四种情况：</p>
+<ol>
+<li><p>只有一种字符，不可能成功；<br>有两种字符，其中一种占一半以上，另一半一定&lt;=n.</p>
+</li>
+<li><p>少的一种小于3时，不可能成功；</p>
+</li>
+<li><p>少的一种至少为3个，成功；</p>
+</li>
+<li><p>如果种类多于2种，成功；</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; v;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>, ll&gt; mp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">	ll n = (<span class="keyword">int</span>)s.length() / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it : s) &#123;</span><br><span class="line">		<span class="keyword">if</span> (mp[it] == <span class="number">0</span>)</span><br><span class="line">			v.push_back(it);</span><br><span class="line">		mp[it]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (v.<span class="built_in">size</span>() == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (v.<span class="built_in">size</span>() == <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((mp[v[<span class="number">0</span>]] &gt; n &amp;&amp; mp[v[<span class="number">1</span>]] &lt; <span class="number">3</span>) || (mp[v[<span class="number">1</span>]] &gt; n &amp;&amp; mp[v[<span class="number">0</span>]] &lt; <span class="number">3</span>)) &#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (mp[v[<span class="number">0</span>]] &gt; n &amp;&amp; mp[v[<span class="number">1</span>]] &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">			mp[v[<span class="number">1</span>]]--;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (mp[v[<span class="number">1</span>]] &gt; n &amp;&amp; mp[v[<span class="number">0</span>]] &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">			<span class="keyword">char</span> tem = v[<span class="number">0</span>];</span><br><span class="line">			v[<span class="number">0</span>] = v[<span class="number">1</span>];</span><br><span class="line">			v[<span class="number">1</span>] = tem;</span><br><span class="line">			mp[v[<span class="number">1</span>]]--;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">char</span>&gt; q;</span><br><span class="line">	<span class="keyword">char</span> la = <span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> it : v)</span><br><span class="line">	&#123;</span><br><span class="line">		q.push(it);</span><br><span class="line">		<span class="keyword">if</span> (la != <span class="string">'0'</span>) q.push(la);</span><br><span class="line">		<span class="keyword">if</span> (mp[it] &gt; n) la = it;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">char</span> t = q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">int</span> len = <span class="built_in">min</span>(mp[t], n);</span><br><span class="line">		mp[t] -= len;</span><br><span class="line">		for1(i, len) <span class="built_in">cout</span>&lt;&lt;t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (flag == <span class="number">1</span>)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[<span class="number">1</span>];</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="B：DP"><a href="#B：DP" class="headerlink" title="B：DP"></a>B：DP</h5><p><strong>题意</strong><br>有n个问题和两种状态。每个问题的两种状态下获得的经验和所需时间都不同。初始状态为状态一，且获得足够经验后才可以到状态二，同理获得足够经验才可以通过状态二。求通关的最短时间。</p>
+<p><strong>思路</strong><br>建立三维dp数组dp[i][j][k]，代表解决任务i是获得状态一的j点经验，状态二的k点经验。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ac</span>&#123;</span></span><br><span class="line">  ll x, t, y, r;</span><br><span class="line">&#125; a[<span class="number">501</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(ac a,ac b)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a.x &lt; b.x;</span><br><span class="line">&#125;</span><br><span class="line">ll dp[<span class="number">2</span>][<span class="number">501</span>][<span class="number">501</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n, s1, s2, f = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= s1; ++j) <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= s2; ++k) &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j][k] = INF;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    for1(i, n) &#123;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; a[i].x &gt;&gt; a[i].t &gt;&gt; a[i].y &gt;&gt; a[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a + <span class="number">1</span>, a + <span class="number">1</span> + n, cmp);</span><br><span class="line">    for1(i, n) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= s1; ++j) <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= s2; ++k) &#123;</span><br><span class="line">          dp[f ^ <span class="number">1</span>][j][k] = dp[f][j][k];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= s1; ++j) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= s2; ++k)&#123;</span><br><span class="line">          <span class="keyword">if</span>(dp[f][j][k] &lt; INF)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;s1)&#123;</span><br><span class="line">              <span class="keyword">if</span>(j+a[i].x&lt;s1)&#123;</span><br><span class="line">                dp[f ^ <span class="number">1</span>][j + a[i].x][k] = <span class="built_in">min</span>(dp[f ^ <span class="number">1</span>][j + a[i].x][k], dp[f][j][k] + a[i].t);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">else</span>&#123;</span><br><span class="line">                dp[f ^ <span class="number">1</span>][s1][<span class="built_in">min</span>(k + j + a[i].x - s1, s2)] = <span class="built_in">min</span>(dp[f ^ <span class="number">1</span>][s1][<span class="built_in">min</span>(k + j + a[i].x - s1, s2)], dp[f][j][k] + a[i].t);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k + a[i].y&lt;s2)&#123;</span><br><span class="line">              dp[f ^ <span class="number">1</span>][j][k + a[i].y] = <span class="built_in">min</span>(dp[f ^ <span class="number">1</span>][j][k + a[i].y], dp[f][j][k] + a[i].r);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">              dp[f ^ <span class="number">1</span>][j][s2] = <span class="built_in">min</span>(dp[f ^ <span class="number">1</span>][j][s2], dp[f][j][k] + a[i].r);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      f ^= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dp[f][s1][s2]&gt;<span class="number">0</span>&amp;&amp;dp[f][s1][s2]&lt;INF) <span class="built_in">cout</span> &lt;&lt; dp[f][s1][s2] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-AtCoder DP26题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/">AtCoder DP专题26道</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/AtCoder%20DP26%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-07-06T01:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果全部掌握了DP应该算是小有所成了<br>一半是寒假写的，另一半算是暑假补作业。</p>
+        
+          <a class="article-more-a" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-莫比乌斯反演学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -749,166 +919,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/16/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%E4%B8%8ELCA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Ozon Tech Challenge 2020 C题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/">3.3可惜的C题，真的非常简单，就是没想出来</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-Kuroni-and-Impossible-Calculation"><a href="#C-Kuroni-and-Impossible-Calculation" class="headerlink" title="C. Kuroni and Impossible Calculation"></a><a href="https://codeforces.com/contest/1305/problem/C" target="_blank" rel="noopener">C. Kuroni and Impossible Calculation</a></h3>
-        
-          <a class="article-more-a" href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">思维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/Ozon%20Tech%20Challenge%202020%20C%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DFS小结与解题报告" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">Depth First Search_小结</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" class="archive-article-date">
-  	<time datetime="2020-03-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>深搜算是接触时间最长的搜索算法之一，但是由于平时遇到的题目不多，反而学的不算扎实。这类算法的难点在于状态的记录、检索、剪枝优化。尤其是把问题的发展想明白，常犯的错误是“重叠”，没有弄明白状态的“层次”和“分支”，造成重复遍历若干覆盖同一状态的搜索树，使得搜索的复杂度大规模增长。本篇就总结两道不错的入门复习题和应该学会的综合题。</p>
-        
-          <a class="article-more-a" href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LYD</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/02/DFS%E5%B0%8F%E7%BB%93%E4%B8%8E%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">展开全文 >></a>
         </p>
       
 
