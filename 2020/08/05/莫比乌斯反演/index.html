@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yukun80.github.io">
-  <title>yukun</title>
+  <title>莫比乌斯反演笔记 | yukun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yukun">
-<meta property="og:url" content="https://yukun80.github.io/index.html">
+  <meta name="description" content="莫比乌斯反演有什么作用？对于一些函数 $f(n)$，如果我们很难直接求出它的值，而容易求出倍数和或约数和 $F(n)$，那么我们可以通过莫比乌斯反演来求得 $f(n)$ 的值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演笔记">
+<meta property="og:url" content="https://yukun80.github.io/2020/08/05/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/index.html">
 <meta property="og:site_name" content="yukun">
-<meta property="og:description" content="blog">
+<meta property="og:description" content="莫比乌斯反演有什么作用？对于一些函数 $f(n)$，如果我们很难直接求出它的值，而容易求出倍数和或约数和 $F(n)$，那么我们可以通过莫比乌斯反演来求得 $f(n)$ 的值。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-05T21:44:19.433Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="yukun" type="application/atom+xml">
@@ -140,16 +143,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-莫比乌斯反演" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-莫比乌斯反演" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/05/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">莫比乌斯反演笔记</a>
+    <h1 class="article-title" itemprop="name">
+      莫比乌斯反演笔记
     </h1>
   
 
@@ -163,9 +164,41 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>莫比乌斯反演有什么作用？<br>对于一些函数 $f(n)$，如果我们很难直接求出它的值，而容易求出倍数和或约数和 $F(n)$，那么我们可以通过莫比乌斯反演来求得 $f(n)$ 的值。</p>
-        
-          <a class="article-more-a" href="/2020/08/05/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#more">more >></a>
-        
+<a id="more"></a>
+
+<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>首先来看一个函数：$$F(n) = \sum_{d|n}f(d)$$<br>根据F函数的定义，可以得到：<br>$$F(1) = f(1)$$ $$F(2) = f(1) + f(2)$$ $$F(3) = f(1) + f(3)$$ $$F(4) = f(1) + f(2) + f(4)$$ $$F(5) = f(1) + f(5)$$ $$F(6) = f(1) + f(2) + f(3) + f(6)$$</p>
+<p>如果我们已知 $F(n)$ 我们可以通过反推求出 $f(n)$：<br>$$f(1) = F(1)$$ $$f(2) = F(2) - F(1)$$ $$f(3) = F(3) - F(1)$$ $$f(4) = F(4) - F(2)$$ $$f(5) = F(5) - F(1)$$ $$f(6) = F(6) - F(3) - F(2) + F(1)$$</p>
+<p>在这个反推的过程中存在一些规律，总结起来公式如下：$$F(n) = \sum_{d|n}f(d) –&gt;f(n) = \sum_{d|n}u(d)F(\frac{n}{d})$$</p>
+<p>其中的$u(d)$就是莫比乌斯函数。</p>
+<h3 id="莫比乌斯函数-u-d"><a href="#莫比乌斯函数-u-d" class="headerlink" title="莫比乌斯函数$u(d)$"></a>莫比乌斯函数$u(d)$</h3><p><strong>函数定义：</strong><br>$$ u(d) = \begin{cases}<br>1 &amp; (d=1)\<br>(-1)^k &amp; (d = p_1p_2p_3 \cdots p_k) \<br>0 &amp; (others)<br>\end{cases}$$</p>
+<p><strong>函数性质</strong></p>
+<ol>
+<li>对于任意正整数n有<br>$$\sum_{d|n}u(d) = \begin{cases}<br>1 &amp; (n = 1)\<br>0 &amp; (n &gt; 1)<br>\end{cases}$$</li>
+</ol>
+<p><strong>证明：</strong></p>
+<ol>
+<li>若n = 1，那么显然成立；</li>
+<li>若n ≠ 1，那么n一定可以分解得到 $n = p_1^{a1} \cdots p_k^{ak}$<br>因此在n的所有因子中，当且仅当该因子的所有质因子次数均为1时u值不为零。其中，质因子个数为r个的因子有$C_k^r$个。<br>那么显然 $$\sum_{d|n}u(d) = C_k^0 - C_k^1 + C_k^2 + \cdots + (-1)^kC_k^k = \sum^k_{i=0} (-1)^iC_k^i$$<br>又因为二项式定理 $$(x+y)^n = \sum^n_{i=0}C^i_nx^iy^{n-i}$$<br>所以令$x = -1, y = 1$，代入，证明完毕。<br>_<ol start="2">
+<li>积性函数</li>
+</ol>
+<strong>数论中积性函数的定义：</strong><br>设 $f(n)$ 为一个定义在 $N^+$ 集合上的函数，如果对于任意的 $(x, y)=1$ 有 $f(xy)=f(x)<em>f(y)$，则称 $f(n)$ 为一个 *</em>积性函数<strong>；<br>若对于任意x和y均有 $f(xy)=f(x)<em>f(y)$ ，则称 $f(n)$ 为一个 *</em>完全积性函数。</strong><br><strong>积性函数的性质</strong></li>
+<li>$f(1) = 1$；</li>
+<li>积性函数的前缀和也是积性函数；<br>_<ol start="3">
+<li>(不重要)对任意正整数n有：$$\sum_{d|n} \frac{u(d)}{d} = \frac{\phi(n)}{n}$$</li>
+</ol>
+<strong>证明：</strong><br>只需要令$F(n) = n,f(n) = \phi (n)$代入莫比乌斯反演公式即可。</li>
+</ol>
+<p><strong>Mobius函数代码</strong><br>由于莫比乌斯函数是积性函数，因此可以通过线性筛来求出莫比乌斯函数的值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">bool</span> check[N+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[N+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">memset</span>(check,<span class="literal">false</span>,<span class="keyword">sizeof</span>(check));</span><br><span class="line">   mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>( !check[i] ) &#123;</span><br><span class="line">         prime[tot++] = i;</span><br><span class="line">         mu[i] = <span class="number">-1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(i * prime[j] &gt; N) <span class="keyword">break</span>;</span><br><span class="line">         check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//改变质因子系数进而得到函数值</span></span><br><span class="line">         <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)  &#123;</span><br><span class="line">            mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            mu[i * prime[j]] = -mu[i];</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h3><p><strong>形式一</strong><br>$$F(n) = \sum_{d|n}f(d) –&gt;f(n) = \sum_{d|n}u(d)F(\frac{n}{d})$$</p>
+<p>证明：<br>对原式做数论变换：<br>$$\sum_{d|n}u(d)F(\frac{n}{d}) = \sum_{d|n}u(d)\sum_{d|\frac{n}{k}}f(k) = \sum_{k|n}f(k)\sum_{d|\frac{n}{k}}u(d)$$<br>根据莫比乌斯函数性质，有<br>$$\sum_{d|n}u(d) = \begin{cases}<br>1 &amp; (n = 1)\<br>0 &amp; (n &gt; 1)<br>\end{cases}$$<br>因此当且仅当$\frac{n}{k} = 1$时，即n=k时，$\sum_{d|\frac{n}{k}}u(d)=1$，否则为0.<br>所以$$\sum_{k|n}f(k)\sum_{d|\frac{n}{k}}u(d) = f(n)$$</p>
+<p><strong>形式二</strong><br>$$F(n) = \sum_{n|d}f(d) –&gt;f(n) = \sum_{n|d}u(\frac{d}{n})F(d)$$</p>
+<p>证明<br>与形式一同理<br>$$\sum_{n|d}u(\frac{d}{n})F(d) = \sum_{k=1}^{+∞}u(k)f(nk) = \sum_{k=1}^{+∞}u(k)\sum_{nk|t}f(t) = \sum_{n|t}f(t)\sum_{k|\frac{t}{n}}u(k)$$<br>同理当且仅当$\frac{t}{n} = 1$时，即t=n时，$\sum_{k|\frac{t}{n}}u(k)=1$，否则为0.<br>最终得到<br>$$\sum_{n|t}f(t)\sum_{k|\frac{t}{n}}u(k) = f(n)$$<br>证毕。<br>卷积证明自己了解。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="BZOJ2301-所有教程都有的经典例题"><a href="#BZOJ2301-所有教程都有的经典例题" class="headerlink" title="BZOJ2301(所有教程都有的经典例题)"></a>BZOJ2301(所有教程都有的经典例题)</h4><p><strong>题意：</strong><br>对于给出的 n 个询问，每次求有多少个数对 (x, y)，满足 a &lt;= x &lt;= b, c &lt;= y &lt;= d，且gcd(x, y) = k，gcd(x, y) 函数为 x 和 y 的最大公约数。1 &lt;= n &lt;= 50000, 1 &lt;= a &lt;= b &lt;=50000, 1 &lt;= c &lt;= d &lt;= 50000, 1 &lt;= k &lt;= 50000</p>
+<p><strong>思路：</strong><br>首先利用容斥原理将一个询问拆分成四个，每次询问有多少个数对(x,y)满足1&lt;=x&lt;=n,1&lt;=y&lt;=m且gcd(x,y)=k，这个问题等价于询问有多少个数对(x,y)满足1&lt;=x&lt;=floor(n/k),1&lt;=y&lt;=floor(m/k)且x与y互质。<br>由于之前的结论，我们可以令f(i)为1&lt;=x&lt;=n,1&lt;=y&lt;=m且gcd(x,y)=i的数对(x,y)的个数，F(i)为1&lt;=x&lt;=n,1&lt;=y&lt;=m且gcd(x,y)为i的倍数的数对(x,y)的个数<br>那么显然    $F(i) = \lfloor \frac{n}{i} \rfloor \lfloor \frac{m}{i} \rfloor$<br>代入到莫比乌斯反演中，得到$f(i) = \sum_{i|d}u(\frac{d}{i})F(d) = \sum_{i|d}u(\frac{d}{i})\lfloor \frac{n}{d} \rfloor \lfloor \frac{m}{d} \rfloor$ 然后枚举每一个k的倍数即可。<br>优化：$\lfloor \frac{n}{d} \rfloor \lfloor \frac{m}{d} \rfloor$都最多有$2\sqrt{n}和2\sqrt{m}$个值，因此枚举这$2(\sqrt{n} + \sqrt{m})$个取值，对莫比乌斯函数维护前缀和，即可在$O(\sqrt{n})$得出解。</p>
+<p>代码来自kuangbin</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">bool</span> check[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="built_in">memset</span>(check,<span class="literal">false</span>,<span class="keyword">sizeof</span>(check));</span><br><span class="line">   mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>( !check[i] ) &#123;</span><br><span class="line">         prime[tot++] = i;</span><br><span class="line">         mu[i] = <span class="number">-1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(i * prime[j] &gt; N) <span class="keyword">break</span>;</span><br><span class="line">         check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//改变质因子系数进而得到函数值</span></span><br><span class="line">         <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)  &#123;</span><br><span class="line">            mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            mu[i * prime[j]] = -mu[i];</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> sum[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="comment">//找 [1,n],[1,m] 内互质的数的对数</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">if</span>(n &gt; m) swap(n,m);</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>, la = <span class="number">0</span>; i &lt;= n; i = la+<span class="number">1</span>) &#123;</span><br><span class="line">      la = <span class="built_in">min</span>(n/(n/i), m/(m/i));</span><br><span class="line">      ans += (<span class="keyword">long</span> <span class="keyword">long</span>)(sum[la] - sum[i<span class="number">-1</span>])*(n/i)*(m/i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Moblus();</span><br><span class="line">   sum[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= MAXN;i++)</span><br><span class="line">      sum[i] = sum[i<span class="number">-1</span>] + mu[i];</span><br><span class="line">   <span class="keyword">int</span> a,b,c,d,k;</span><br><span class="line">   <span class="keyword">int</span> T;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">   <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d,&amp;k);</span><br><span class="line">      <span class="keyword">long</span> <span class="keyword">long</span> ans = solve(b/k,d/k) - solve((a<span class="number">-1</span>)/k,d/k) - solve(b/k,(c<span class="number">-1</span>)/k) + solve((a<span class="number">-1</span>)/k,(c<span class="number">-1</span>)/k);</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -187,16 +220,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/05/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/31/hdu%E5%A4%9A%E6%A0%A1%E7%AC%AC4%E5%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HDU 2020 Multi-University Training Contest 4</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -211,717 +252,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hdu多校第4场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/hdu%E5%A4%9A%E6%A0%A1%E7%AC%AC4%E5%9C%BA/">HDU 2020 Multi-University Training Contest 4</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/31/hdu%E5%A4%9A%E6%A0%A1%E7%AC%AC4%E5%9C%BA/" class="archive-article-date">
-  	<time datetime="2020-07-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这场打的很不好，可能是太久没有高强度做题了，思维绕不到关键的点上。最后被卡在1004，算是这次没打好的主要原因吧……我的锅。</p>
-        
-          <a class="article-more-a" href="/2020/07/31/hdu%E5%A4%9A%E6%A0%A1%E7%AC%AC4%E5%9C%BA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">比赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/31/hdu%E5%A4%9A%E6%A0%A1%E7%AC%AC4%E5%9C%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引子"><span class="toc-number">1.</span> <span class="toc-text">引子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#莫比乌斯函数-u-d"><span class="toc-number">2.</span> <span class="toc-text">莫比乌斯函数$u(d)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#莫比乌斯反演"><span class="toc-number">3.</span> <span class="toc-text">莫比乌斯反演</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">4.</span> <span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BZOJ2301-所有教程都有的经典例题"><span class="toc-number">4.1.</span> <span class="toc-text">BZOJ2301(所有教程都有的经典例题)</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-2020.07.12牛客多校第一场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/15/2020.07.12%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/">2020.07.12牛客多校第一场实况&amp;解题报告&amp;补题ing</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/15/2020.07.12%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/" class="archive-article-date">
-  	<time datetime="2020-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>比赛开场很顺利，F字符串思维 和 J分部积分的计算很快出了，接着cncn和我开始看I题，骚老师看了A和H，cncn和我看了I。I想了几个排除条件和dfs暴力，但最终没有出。看通过代码居然是网络流，感觉有点可惜</p>
-        
-          <a class="article-more-a" href="/2020/07/15/2020.07.12%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/15/2020.07.12%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-网络流板子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%9D%BF%E5%AD%90/">网络流初步</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%9D%BF%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2020-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不啦不啦不啦</p>
-        
-          <a class="article-more-a" href="/2020/07/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%9D%BF%E5%AD%90/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">网络流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/15/%E7%BD%91%E7%BB%9C%E6%B5%81%E6%9D%BF%E5%AD%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-7.10 18级多校适应训练1题解及补题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/">7.10 多校适应训练1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-07-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="比赛过程"><a href="#比赛过程" class="headerlink" title="比赛过程"></a>比赛过程</h3><p>今天比赛自己十分混乱，开场和队友商量看C，遇上小学期第一天下午老师讲课，边听课边思考，一度裂开。后面想到了方法但是还是wa了(枯了)。</p>
-        
-          <a class="article-more-a" href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">解题报告</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/10/7.10%2018%E7%BA%A7%E5%A4%9A%E6%A0%A1%E9%80%82%E5%BA%94%E8%AE%AD%E7%BB%831%E9%A2%98%E8%A7%A3%E5%8F%8A%E8%A1%A5%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AtCoder DP26题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/">AtCoder DP专题26道</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/06/AtCoder%20DP26%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-07-06T01:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果全部掌握了DP应该算是小有所成了<br>一半是寒假写的，另一半算是暑假补作业。</p>
-        
-          <a class="article-more-a" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/AtCoder%20DP26%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-莫比乌斯反演学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/">莫比乌斯反演学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-07-03T01:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>未完成，题量有限。</p>
-        
-          <a class="article-more-a" href="/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">训练</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/03/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DP强化训练" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/DP%E5%BC%BA%E5%8C%96%E8%AE%AD%E7%BB%83/">2020暑期集训1：DP强化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/DP%E5%BC%BA%E5%8C%96%E8%AE%AD%E7%BB%83/" class="archive-article-date">
-  	<time datetime="2020-06-29T13:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>题目较多，知识点较杂，多为入门题。未完成</p>
-        
-          <a class="article-more-a" href="/2020/06/29/DP%E5%BC%BA%E5%8C%96%E8%AE%AD%E7%BB%83/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">训练</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/DP%E5%BC%BA%E5%8C%96%E8%AE%AD%E7%BB%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GIS开发$1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/">ArcGIS Engine学习01</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/" class="archive-article-date">
-  	<time datetime="2020-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ArcGIS Engine是一个用于<strong>建立自定义独立地理信息系统应用程序的平台</strong>，支持多种APIs，拥有许多高级GIS功能，构建在工业标准基础之上。</p>
-        
-          <a class="article-more-a" href="/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIS设计与开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/GIS%E5%BC%80%E5%8F%91$1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Codeforces Round #631" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/Codeforces%20Round%20#631/">(div.2)Codeforces Round &amp;631 补题报告</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/04/Codeforces%20Round%20#631/" class="archive-article-date">
-  	<time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>省去好多想bb的废话</p>
-        
-          <a class="article-more-a" href="/2020/04/04/Codeforces%20Round%20#631/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/04/Codeforces%20Round%20#631/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -944,8 +300,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
